@@ -1,0 +1,18 @@
+{
+  "name": "dp-cli",
+  "version": "1.0.0",
+  "description": "dp cli playground",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Dong Nguyen",
+  "license": "ISC",
+  "dependencies": {
+    "yargs": "^17.0.1"
+  },
+  "main": "bin/dp-cli.js",
+  "bin": {
+    "dp": "./bin/dp-cli.js"
+  }
+}
