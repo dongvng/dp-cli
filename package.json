@@ -1,5 +1,5 @@
 {
-  "name": "dp-cli",
+  "name": "@dp66/dp-cli",
   "version": "1.0.1",
   "description": "dp cli playground",
   "scripts": {
