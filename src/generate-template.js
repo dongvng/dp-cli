@@ -18,17 +18,26 @@ async function createTemplate(options) {
 
   packageJsonRoot.name = name;
   // install dependencies of template project
-  await spawnProcess(
-    'npm',
-    ['--prefix', root, 'install', '--save'].concat(
-      Object.entries(packageJsonRoot.dependencies).map(
-        ([name, version]) => `${name}@${version}`
+  const hasDependencies =
+    packageJsonRoot.dependencies &&
+    Object.entries(packageJsonRoot.dependencies).length > 0;
+
+  if (hasDependencies) {
+    await spawnProcess(
+      'npm',
+      ['--prefix', root, 'install', '--save'].concat(
+        Object.entries(packageJsonRoot.dependencies).map(
+          ([name, version]) => `${name}@${version}`
+        )
       )
-    )
-  );
+    );
+  }
 
   // install devDependencies
-  if (packageJsonRoot.devDependencies) {
+  const hasDevDependencies =
+    packageJsonRoot.devDependencies &&
+    Object.entries(packageJsonRoot.devDependencies).length > 0;
+  if (hasDevDependencies) {
     await spawnProcess(
       'npm',
       ['--prefix', root, 'install', '-D'].concat(
@@ -38,6 +47,10 @@ async function createTemplate(options) {
       )
     );
   }
+
+  console.log(chalk.green(`cd ${name} to start developing your project!`));
+
+  console.log();
 
   console.log(chalk.green('Happy Coding <3'));
 
