@@ -1,5 +1,5 @@
 {
-  "name": "@dp66/dp-cli",
+  "name": "dongvng-cli",
   "version": "1.0.1",
   "description": "dp cli playground",
   "scripts": {
@@ -15,8 +15,8 @@
     "fs-extra": "^10.0.0",
     "yargs": "^17.0.1"
   },
-  "main": "bin/dp-cli.js",
+  "main": "bin/cli.js",
   "bin": {
-    "dp": "./bin/dp-cli.js"
+    "dongvng-cli": "./bin/cli.js"
   }
 }

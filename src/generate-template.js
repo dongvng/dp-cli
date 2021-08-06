@@ -15,6 +15,7 @@ async function createTemplate(options) {
 
   const packageJsonRoot = require(path.join(root, 'package.json'));
 
+  packageJsonRoot.name = name;
   // install dependencies of template project
   await spawnProcess(
     'npm',
