@@ -13,7 +13,6 @@
     "commander": "^8.1.0",
     "cross-spawn": "^7.0.3",
     "fs-extra": "^10.0.0",
-    "web-vitals": "^1.1.2",
     "yargs": "^17.0.1"
   },
   "main": "bin/dp-cli.js",
