@@ -14,6 +14,8 @@ async function createTemplate(options) {
 
   fs.copySync(path.join(templateDir, type), root);
 
+  process.chdir(root); // change current working dir to generated template
+
   const packageJsonRoot = require(path.join(root, 'package.json'));
 
   packageJsonRoot.name = name;
@@ -25,7 +27,7 @@ async function createTemplate(options) {
   if (hasDependencies) {
     await spawnProcess(
       'npm',
-      ['--prefix', root, 'install', '--save'].concat(
+      ['install', '--save'].concat(
         Object.entries(packageJsonRoot.dependencies).map(
           ([name, version]) => `${name}@${version}`
         )
@@ -40,7 +42,7 @@ async function createTemplate(options) {
   if (hasDevDependencies) {
     await spawnProcess(
       'npm',
-      ['--prefix', root, 'install', '-D'].concat(
+      ['install', '-D'].concat(
         Object.entries(packageJsonRoot.devDependencies).map(
           ([name, version]) => `${name}@${version}`
         )
@@ -48,11 +50,11 @@ async function createTemplate(options) {
     );
   }
 
-  console.log(chalk.green(`cd ${name} to start developing your project!`));
+  console.log(chalk.green(`cd ./${name} and start developing your project!`));
 
   console.log();
 
-  console.log(chalk.green('Happy Coding <3'));
+  console.log(chalk.green('Happy Coding! From C3 with <3'));
 
   // try to run script from template after instal
   //await spawnProcess('npm', ['--prefix', root, 'run', 'start']); // expect to log from main.js file
