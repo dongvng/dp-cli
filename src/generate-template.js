@@ -19,6 +19,10 @@ async function createTemplate(options) {
   const packageJsonRoot = require(path.join(root, 'package.json'));
 
   packageJsonRoot.name = name;
+
+  // override pkg file with above change to name of repo
+  writeJson(path.join(root, 'package.json'), packageJsonRoot);
+
   // install dependencies of template project
   const hasDependencies =
     packageJsonRoot.dependencies &&
