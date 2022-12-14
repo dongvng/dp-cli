@@ -29,6 +29,8 @@ async function createTemplate(options) {
     Object.entries(packageJsonRoot.dependencies).length > 0;
 
   if (hasDependencies) {
+    console.log(chalk.cyanBright('Installing...'));
+
     await spawnProcess(
       'npm',
       ['install', '--save'].concat(
@@ -58,7 +60,7 @@ async function createTemplate(options) {
 
   console.log();
 
-  console.log(chalk.green('Happy Coding! From C3 with <3'));
+  console.log(chalk.green('Happy Coding! From NAB with <3'));
 
   // try to run script from template after instal
   //await spawnProcess('npm', ['--prefix', root, 'run', 'start']); // expect to log from main.js file
